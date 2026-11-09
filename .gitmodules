@@ -1,9 +1,9 @@
-[submodule "third_party/boost"]
-	path = third_party/boost
+[submodule "third_party/boost/boost1.89.0"]
+	path = third_party/boost/boost1.89.0
 	url = https://github.com/boostorg/boost
-[submodule "third_party/eigen"]
-	path = third_party/eigen
+[submodule "third_party/eigen/eigen3.4.0"]
+	path = third_party/eigen/eigen3.4.0
 	url = https://gitlab.com/libeigen/eigen.git
-[submodule "third_party/openmesh"]
-	path = third_party/openmesh
+[submodule "third_party/openmesh/openmesh7.0"]
+	path = third_party/openmesh/openmesh7.0
 	url = https://gitlab.com/ivandiegorodriguez/OpenMeshMirror.git
