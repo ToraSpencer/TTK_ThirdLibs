@@ -1,0 +1,3 @@
+# Keep the directory tracked but ignore generated install output.
+*
+!.gitignore
