@@ -7,3 +7,6 @@
 [submodule "third_party/openmesh/openmesh7.0"]
 	path = third_party/openmesh/openmesh7.0
 	url = https://gitlab.com/ivandiegorodriguez/OpenMeshMirror.git
+[submodule "third_party/gtest/gtest1.5.0"]
+	path = third_party/gtest/gtest1.5.0
+	url = https://github.com/google/googletest.git
