@@ -72,6 +72,8 @@ target_link_libraries(your_target PRIVATE gtest_main)
 | OpenMesh 7.0 | `third_party/openmesh/build_release7.0.bat` / `build_debug7.0.bat` | `include/` + `libs/`（`OpenMeshCore`、`OpenMeshTools`） |
 | GTest 1.5.0 | `third_party/gtest/build_release1.5.0.bat` / `build_debug1.5.0.bat` | `include/` + `libs/`（`gtest`、`gtest_main`） |
 
+仓库根目录另有 `build_all_release.bat` / `build_all_debug.bat`，按上表顺序调用四个库的对应脚本：单个库失败不会中断其余库，全部结束后汇总结果，有失败时以非零退出码返回。
+
 前置条件：CMake 在 `PATH` 中、安装 Visual Studio 2022、Boost 的全部嵌套子模块已初始化。输出统一为 x64 静态库。产物布局、CMake 用法与限制见 [操作说明.md §10](操作说明.md#10-预编译与安装脚本)。
 
 ## 3. 注意事项
