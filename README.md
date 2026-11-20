@@ -31,6 +31,8 @@ cd third_party/boost/boost1.89.0
 git submodule update --init --recursive --depth 1 --jobs 8
 ```
 
+Windows 下可直接双击仓库根目录的 `完整拉取所有第三方库.bat` 完成上述全部拉取步骤：脚本会同步并递归拉取 4 个库（含 Boost 的 170 个嵌套子模块），失败自动多轮及逐项重试、清理中断残留，可重复运行；仅在未设置时补齐 `.git/config` 的网络超时项。
+
 克隆后 `third_party/boost/boost1.89.0` 只有空骨架：<span style="background-color: #40E0D0;">Boost 嵌套子模块的初始化状态不会随仓库同步，必须用上面的命令补拉。</span>推荐一次拉取全部 170 个子模块（浅克隆）；只做嵌入式使用时，也可以只拉 `geometry` + `serialization` 的依赖闭包，见[操作说明 §2.3](操作说明.md#23-只拉取依赖闭包可选)。Eigen、OpenMesh 与 GTest 都没有嵌套子模块，执行 `git submodule update --init` 后即可直接使用。
 
 ### 2.2. 在 CMake 中使用
