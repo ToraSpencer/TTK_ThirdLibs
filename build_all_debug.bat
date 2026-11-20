@@ -55,3 +55,6 @@ if "%FAILED%"=="1" (
 
 echo [OK] All libraries installed to "%~dp0debug_install"
 endlocal
+
+pause
+

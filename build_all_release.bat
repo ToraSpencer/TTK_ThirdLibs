@@ -55,3 +55,5 @@ if "%FAILED%"=="1" (
 
 echo [OK] All libraries installed to "%~dp0install"
 endlocal
+
+pause
