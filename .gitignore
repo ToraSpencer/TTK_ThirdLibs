@@ -1,3 +1,6 @@
+*.pdf
+*.PDF
+
 # Build output
 build/
 __build/
