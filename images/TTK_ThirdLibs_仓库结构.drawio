@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="Claude Code" agent="Claude Code" version="24.0.0">
+  <diagram id="ttk-thirdlibs-structure" name="TTK_ThirdLibs 仓库结构">
+    <mxGraphModel dx="1500" dy="1140" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="1140" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- 标题与图例 -->
+        <mxCell id="title" value="TTK_ThirdLibs 仓库结构" style="text;html=1;align=left;verticalAlign=middle;fontSize=26;fontStyle=1;fontColor=#1F2D3D;" vertex="1" parent="1">
+          <mxGeometry x="40" y="14" width="700" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="上游 git submodule → 构建脚本 → build/ → install | debug_install → TTTML 等消费者" style="text;html=1;align=left;verticalAlign=middle;fontSize=12;fontColor=#5A6673;" vertex="1" parent="1">
+          <mxGeometry x="40" y="48" width="700" height="22" as="geometry" />
+        </mxCell>
+
+        <mxCell id="legendSrc" value="" style="rounded=0;html=1;fillColor=#DAE8FC;strokeColor=#4A78B5;" vertex="1" parent="1">
+          <mxGeometry x="760" y="53" width="12" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="legendSrcT" value="源码" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;fontColor=#3C4A57;" vertex="1" parent="1">
+          <mxGeometry x="776" y="48" width="40" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="legendScript" value="" style="rounded=0;html=1;fillColor=#FFF2CC;strokeColor=#C9A227;" vertex="1" parent="1">
+          <mxGeometry x="826" y="53" width="12" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="legendScriptT" value="脚本" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;fontColor=#3C4A57;" vertex="1" parent="1">
+          <mxGeometry x="842" y="48" width="40" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="legendBuild" value="" style="rounded=0;html=1;fillColor=#F5F5F5;strokeColor=#9AA0A6;" vertex="1" parent="1">
+          <mxGeometry x="892" y="53" width="12" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="legendBuildT" value="build" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;fontColor=#3C4A57;" vertex="1" parent="1">
+          <mxGeometry x="908" y="48" width="42" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="legendInstall" value="" style="rounded=0;html=1;fillColor=#D5E8D4;strokeColor=#5B9B4A;" vertex="1" parent="1">
+          <mxGeometry x="960" y="53" width="12" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="legendInstallT" value="install" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;fontColor=#3C4A57;" vertex="1" parent="1">
+          <mxGeometry x="976" y="48" width="50" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="legendDebug" value="" style="rounded=0;html=1;fillColor=#FFE6CC;strokeColor=#C77B30;" vertex="1" parent="1">
+          <mxGeometry x="1036" y="53" width="12" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="legendDebugT" value="debug_install" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;fontColor=#3C4A57;" vertex="1" parent="1">
+          <mxGeometry x="1052" y="48" width="88" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="legendConsumer" value="" style="rounded=0;html=1;fillColor=#E1D5E7;strokeColor=#7E5CA0;" vertex="1" parent="1">
+          <mxGeometry x="1150" y="53" width="12" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="legendConsumerT" value="消费者" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;fontColor=#3C4A57;" vertex="1" parent="1">
+          <mxGeometry x="1166" y="48" width="60" height="22" as="geometry" />
+        </mxCell>
+
+        <!-- ================= A. third_party ================= -->
+        <mxCell id="colSource" value="third_party/ —— 上游源码（git submodule 固定 commit）" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;align=left;spacingLeft=14;spacingTop=8;fontSize=14;fontStyle=1;fillColor=#EAF2FB;strokeColor=#4A78B5;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="40" y="100" width="440" height="460" as="geometry" />
+        </mxCell>
+        <mxCell id="tpBoost" value="boost/boost1.89.0&lt;br&gt;boostorg/boost 超级项目&lt;br&gt;170 个嵌套 submodule（浅克隆）" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#DAE8FC;strokeColor=#4A78B5;align=left;spacingLeft=10;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="60" y="140" width="400" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="tpEigen" value="eigen/eigen3.4.0&lt;br&gt;GitLab libeigen/eigen&lt;br&gt;header-only，无嵌套 submodule" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#DAE8FC;strokeColor=#4A78B5;align=left;spacingLeft=10;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="60" y="225" width="400" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="tpOpenmesh" value="openmesh/openmesh7.0&lt;br&gt;GitLab.com 镜像（官方源不可达）&lt;br&gt;需编译 OpenMeshCore / Tools" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#DAE8FC;strokeColor=#4A78B5;align=left;spacingLeft=10;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="60" y="310" width="400" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="tpGtest" value="gtest/gtest1.5.0&lt;br&gt;google/googletest&lt;br&gt;上游无 install，强制 /MT" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#DAE8FC;strokeColor=#4A78B5;align=left;spacingLeft=10;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="60" y="395" width="400" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="tpImgui" value="imgui/imgui1.93.0&lt;br&gt;ocornut/imgui&lt;br&gt;上游无 CMakeLists / install" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#DAE8FC;strokeColor=#4A78B5;align=left;spacingLeft=10;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="60" y="480" width="400" height="72" as="geometry" />
+        </mxCell>
+
+        <!-- ================= B. 脚本 ================= -->
+        <mxCell id="colScript" value="构建与维护脚本" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;align=left;spacingLeft=14;spacingTop=8;fontSize=14;fontStyle=1;fillColor=#FDF6E3;strokeColor=#C9A227;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="540" y="100" width="440" height="460" as="geometry" />
+        </mxCell>
+        <mxCell id="scAll" value="根脚本 build_all_release.bat / build_all_debug.bat&lt;br&gt;按序调用 5 个库；单个失败不中断，结束汇总" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#FFF2CC;strokeColor=#C9A227;align=left;spacingLeft=10;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="560" y="140" width="400" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="scPerLib" value="每个库一对脚本（third_party/&amp;lt;lib&amp;gt;/）&lt;br&gt;build_release1.89.0.bat / build_debug1.89.0.bat&lt;br&gt;CMake + VS 2022 → x64 静态库（/MD 或 /MDd）" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#FFF2CC;strokeColor=#C9A227;align=left;spacingLeft=10;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="560" y="218" width="400" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="scWrapper" value="包装工程（补齐上游缺失）&lt;br&gt;third_party/gtest/CMakeLists.txt — 保持 /MD&lt;br&gt;third_party/imgui/CMakeLists.txt — Win32 + DX11" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#FFF2CC;strokeColor=#C9A227;align=left;spacingLeft=10;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="560" y="328" width="400" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="scFetch" value="拉取与维护&lt;br&gt;完整拉取所有第三方库.bat / _fetch_all_test.bat&lt;br&gt;gitPull.bat、gitACP.bat、.gitmodules&lt;br&gt;Boost 嵌套子模块需递归浅克隆" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#FFF2CC;strokeColor=#C9A227;align=left;spacingLeft=10;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="560" y="422" width="400" height="104" as="geometry" />
+        </mxCell>
+
+        <!-- ================= C. build ================= -->
+        <mxCell id="colBuild" value="build/ —— CMake 中间产物（已 gitignore）" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;align=left;spacingLeft=14;spacingTop=8;fontSize=14;fontStyle=1;fillColor=#F2F2F2;strokeColor=#9AA0A6;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="100" width="420" height="460" as="geometry" />
+        </mxCell>
+        <mxCell id="bBoost" value="build/boost-release&lt;br&gt;build/boost-debug" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#F5F5F5;strokeColor=#9AA0A6;align=left;spacingLeft=10;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="140" width="380" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="bEigen" value="build/eigen-release&lt;br&gt;build/eigen-debug" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#F5F5F5;strokeColor=#9AA0A6;align=left;spacingLeft=10;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="225" width="380" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="bOpenmesh" value="build/openmesh-release&lt;br&gt;build/openmesh-debug" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#F5F5F5;strokeColor=#9AA0A6;align=left;spacingLeft=10;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="310" width="380" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="bGtest" value="build/gtest-release&lt;br&gt;build/gtest-debug" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#F5F5F5;strokeColor=#9AA0A6;align=left;spacingLeft=10;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="395" width="380" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="bImgui" value="build/imgui-release&lt;br&gt;build/imgui-debug" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#F5F5F5;strokeColor=#9AA0A6;align=left;spacingLeft=10;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="480" width="380" height="72" as="geometry" />
+        </mxCell>
+
+        <!-- ================= D. install / debug_install ================= -->
+        <mxCell id="colInstall" value="install/ —— Release 产物（/MD）" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;align=left;spacingLeft=14;spacingTop=8;fontSize=14;fontStyle=1;fillColor=#EAF6E6;strokeColor=#5B9B4A;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="40" y="600" width="690" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="iBoost" value="boost&lt;br&gt;include/ + libs/libboost_*.lib + cmake/" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#D5E8D4;strokeColor=#5B9B4A;align=left;spacingLeft=10;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="60" y="648" width="320" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="iEigen" value="eigen&lt;br&gt;include/ + 空 libs/ + share/（header-only）" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#D5E8D4;strokeColor=#5B9B4A;align=left;spacingLeft=10;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="400" y="648" width="310" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="iOpenmesh" value="openmesh&lt;br&gt;include/ + OpenMeshCore.lib、OpenMeshTools.lib" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#D5E8D4;strokeColor=#5B9B4A;align=left;spacingLeft=10;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="60" y="700" width="320" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="iGtest" value="gtest&lt;br&gt;include/ + gtest.lib、gtest_main.lib" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#D5E8D4;strokeColor=#5B9B4A;align=left;spacingLeft=10;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="400" y="700" width="310" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="iImgui" value="imgui&lt;br&gt;include/（含 backends/）+ imgui.lib" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#D5E8D4;strokeColor=#5B9B4A;align=left;spacingLeft=10;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="60" y="752" width="320" height="44" as="geometry" />
+        </mxCell>
+
+        <mxCell id="colDebug" value="debug_install/ —— Debug 产物（/MDd）" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;align=left;spacingLeft=14;spacingTop=8;fontSize=14;fontStyle=1;fillColor=#FDEFE3;strokeColor=#C77B30;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="770" y="600" width="690" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="dBoost" value="boost&lt;br&gt;同 Release，libs/ 附 *.pdb" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#FFE6CC;strokeColor=#C77B30;align=left;spacingLeft=10;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="790" y="648" width="320" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="dEigen" value="eigen&lt;br&gt;同 Release（header-only）" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#FFE6CC;strokeColor=#C77B30;align=left;spacingLeft=10;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1130" y="648" width="310" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="dOpenmesh" value="openmesh&lt;br&gt;OpenMeshCored.lib、OpenMeshToolsd.lib（带 d）" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#FFE6CC;strokeColor=#C77B30;align=left;spacingLeft=10;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="790" y="700" width="320" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="dGtest" value="gtest&lt;br&gt;gtest.lib、gtest_main.lib（同名，/MDd）" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#FFE6CC;strokeColor=#C77B30;align=left;spacingLeft=10;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1130" y="700" width="310" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="dImgui" value="imgui&lt;br&gt;imgui.lib（同名，/MDd）" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#FFE6CC;strokeColor=#C77B30;align=left;spacingLeft=10;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="790" y="752" width="320" height="44" as="geometry" />
+        </mxCell>
+
+        <!-- ================= E. 消费者 ================= -->
+        <mxCell id="colConsumer" value="消费者（按 $&amp;lt;CONFIG&amp;gt; 选择 install 或 debug_install）" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;align=left;spacingLeft=14;spacingTop=8;fontSize=14;fontStyle=1;fillColor=#F3EDF8;strokeColor=#7E5CA0;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="40" y="850" width="1420" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="cViewer" value="TTTML_VIEWER&lt;br&gt;imgui.lib + include/backends" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#E1D5E7;strokeColor=#7E5CA0;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="60" y="890" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="cLinalg" value="TRIMESH_LINALG&lt;br&gt;Eigen 3.4（header-only）" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#E1D5E7;strokeColor=#7E5CA0;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="340" y="890" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="cTestCase" value="TTTMLTestCase&lt;br&gt;gtest + Boost" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#E1D5E7;strokeColor=#7E5CA0;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="620" y="890" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="cThirdParty" value="TTTML_TEST_THIRD_PARTY&lt;br&gt;Boost + OpenMesh + gtest" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#E1D5E7;strokeColor=#7E5CA0;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="900" y="890" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="cCore" value="TRIMESH_BASIC / MARCHING_CUBES&lt;br&gt;不依赖本仓库（对照）" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#E1D5E7;strokeColor=#7E5CA0;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="890" width="260" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- ================= F. 文档 ================= -->
+        <mxCell id="colDocs" value="文档" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;align=left;spacingLeft=14;spacingTop=6;fontSize=14;fontStyle=1;fillColor=#FFFFFF;strokeColor=#B0B7BF;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1030" width="1420" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="docReadme" value="README.md — 仓库内容、快速开始、CMake 用法、注意事项" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#FFFFFF;strokeColor=#B0B7BF;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1062" width="670" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="docOps" value="操作说明.md — 完整操作、离线校验、脚本细节、新增第三方库" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#FFFFFF;strokeColor=#B0B7BF;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="770" y="1062" width="670" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- ================= 连线 ================= -->
+        <mxCell id="edgeSourceToScript" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeWidth=2;strokeColor=#5A6673;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="colSource" target="colScript">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="edgeScriptToBuild" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeWidth=2;strokeColor=#5A6673;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="colScript" target="colBuild">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="edgeBuildToInstall" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeWidth=2;strokeColor=#5B9B4A;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="colBuild" target="colInstall">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1040" y="582" />
+              <mxPoint x="385" y="582" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edgeBuildToDebug" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeWidth=2;strokeColor=#C77B30;exitX=0.8;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="colBuild" target="colDebug">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1376" y="592" />
+              <mxPoint x="1115" y="592" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="edgeInstallToConsumer" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeWidth=2;strokeColor=#5B9B4A;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="colInstall" target="colConsumer">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="385" y="832" />
+              <mxPoint x="395" y="832" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edgeDebugToConsumer" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeWidth=2;strokeColor=#C77B30;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="colDebug" target="colConsumer">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1115" y="832" />
+              <mxPoint x="1105" y="832" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

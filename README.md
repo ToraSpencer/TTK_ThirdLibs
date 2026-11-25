@@ -16,7 +16,19 @@ Tora's toolkit - third libraries：以 git submodule 方式托管第三方开源
 
 目录约定：`third_party/<库名>/<库名><版本>/`，版本目录本身就是 submodule 路径。目录名仅用于识别版本，权威版本仍由 gitlink 钉死。
 
+<p align="center">
+  <img src="./images/TTK_ThirdLibs_仓库结构.png" alt="TTK_ThirdLibs 仓库结构" width="100%">
+</p>
+
+<p align="center">仓库结构：上游源码 → 构建脚本 → build/ → install | debug_install → 消费者</p>
+
 ## 2. 快速开始
+
+<p align="center">
+  <img src="./images/TTK_ThirdLibs_构建流程.png" alt="TTK_ThirdLibs 从拉取到使用" width="100%">
+</p>
+
+<p align="center">从拉取源码到在 CMake 中消费的完整流程</p>
 
 ### 2.1. 克隆并拉取依赖
 
@@ -38,6 +50,12 @@ Windows 下可直接双击仓库根目录的 `完整拉取所有第三方库.bat
 克隆后 `third_party/boost/boost1.89.0` 只有空骨架：<span style="background-color: #40E0D0;">Boost 嵌套子模块的初始化状态不会随仓库同步，必须用上面的命令补拉。</span>推荐一次拉取全部 170 个子模块（浅克隆）；只做嵌入式使用时，也可以只拉 `geometry` + `serialization` 的依赖闭包，见[操作说明 §2.3](操作说明.md#23-只拉取依赖闭包可选)。Eigen、OpenMesh、GTest 与 Dear ImGui 都没有嵌套子模块，执行 `git submodule update --init` 后即可直接使用。
 
 ### 2.2. 在 CMake 中使用
+
+<p align="center">
+  <img src="./images/TTK_ThirdLibs_CMake集成方式.png" alt="两种 CMake 集成方式" width="100%">
+</p>
+
+<p align="center">源码集成（方式 A）与预编译集成（方式 B）对比</p>
 
 ```cmake
 # Boost
