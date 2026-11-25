@@ -3,7 +3,7 @@ rem ============================================================
 rem Fetch all third-party submodules (double-click to run).
 rem
 rem - Directory: repository root (next to .gitmodules).
-rem - Fetches the 4 top-level submodules plus Boost's 170 nested
+rem - Fetches the 5 top-level submodules plus Boost's 170 nested
 rem   submodules (shallow clone of the pinned commits).
 rem - Multi-round retry, then per-submodule retry with cleanup of
 rem   half-cloned directories.
@@ -26,11 +26,12 @@ set "EXIT_CODE=0"
 echo ============================================================
 echo   TTK_ThirdLibs - Fetch all third-party submodules
 echo ============================================================
-echo   Recursively fetching 4 submodules (Boost has 170 nested):
+echo   Recursively fetching 5 submodules (Boost has 170 nested):
 echo     - Boost 1.89.0
 echo     - Eigen 3.4.0
 echo     - OpenMesh 7.0
 echo     - Google Test 1.5.0
+echo     - Dear ImGui 1.93.0
 echo ============================================================
 echo.
 

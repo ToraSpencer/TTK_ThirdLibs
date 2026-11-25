@@ -12,7 +12,7 @@ echo Configuration: Release, x64
 echo ========================================
 echo.
 
-echo [1/4] Boost 1.89.0 ...
+echo [1/5] Boost 1.89.0 ...
 call third_party\boost\build_release1.89.0.bat
 set "RC=%errorlevel%"
 if not "%RC%"=="0" (
@@ -21,7 +21,7 @@ if not "%RC%"=="0" (
 )
 echo.
 
-echo [2/4] Eigen 3.4.0 ...
+echo [2/5] Eigen 3.4.0 ...
 call third_party\eigen\build_release3.4.0.bat
 set "RC=%errorlevel%"
 if not "%RC%"=="0" (
@@ -30,7 +30,7 @@ if not "%RC%"=="0" (
 )
 echo.
 
-echo [3/4] OpenMesh 7.0 ...
+echo [3/5] OpenMesh 7.0 ...
 call third_party\openmesh\build_release7.0.bat
 set "RC=%errorlevel%"
 if not "%RC%"=="0" (
@@ -39,11 +39,20 @@ if not "%RC%"=="0" (
 )
 echo.
 
-echo [4/4] Google Test 1.5.0 ...
+echo [4/5] Google Test 1.5.0 ...
 call third_party\gtest\build_release1.5.0.bat
 set "RC=%errorlevel%"
 if not "%RC%"=="0" (
   echo [WARN] Google Test 1.5.0 failed with exit code %RC%
+  set "FAILED=1"
+)
+echo.
+
+echo [5/5] Dear ImGui 1.93.0 ...
+call third_party\imgui\build_release1.93.0.bat
+set "RC=%errorlevel%"
+if not "%RC%"=="0" (
+  echo [WARN] Dear ImGui 1.93.0 failed with exit code %RC%
   set "FAILED=1"
 )
 echo.

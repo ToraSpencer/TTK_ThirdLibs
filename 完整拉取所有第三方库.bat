@@ -3,11 +3,12 @@ rem ============================================================
 rem Fetch all third-party submodules (double-click to run).
 rem
 rem - Directory: repository root (next to .gitmodules).
-rem - Fetches the 4 top-level submodules plus Boost's 170 nested
+rem - Fetches the 5 top-level submodules plus Boost's 170 nested
 rem   submodules (shallow clone of the pinned commits).
 rem - Multi-round retry, then per-submodule retry with cleanup of
 rem   half-cloned directories.
-rem - Safe to re-run: ready submodules are skipped automatically.
+rem - Safe to re-run: a full state check runs first; when every
+rem   submodule is ready the script exits without touching them.
 rem
 rem NOTE: keep this file ASCII-only. cmd.exe mis-parses non-ASCII
 rem text in batch files (byte offsets desync), which breaks lines
@@ -26,11 +27,12 @@ set "EXIT_CODE=0"
 echo ============================================================
 echo   TTK_ThirdLibs - Fetch all third-party submodules
 echo ============================================================
-echo   Recursively fetching 4 submodules (Boost has 170 nested):
+echo   Recursively fetching 5 submodules (Boost has 170 nested):
 echo     - Boost 1.89.0
 echo     - Eigen 3.4.0
 echo     - OpenMesh 7.0
 echo     - Google Test 1.5.0
+echo     - Dear ImGui 1.93.0
 echo ============================================================
 echo.
 
@@ -62,6 +64,20 @@ rem ---------- Sync submodule URLs ----------
 echo [1/3] Syncing submodule URLs ...
 git submodule sync --recursive >nul
 if errorlevel 1 echo [WARN] Sync failed, continuing anyway.
+echo.
+
+rem ---------- Fast path: skip all work when everything is ready ----------
+echo [2/3] Checking whether all submodules are already fetched ...
+call :check_status full
+if "!CHECK_ERROR!"=="1" (
+  echo [WARN] Cannot read submodule status, updating anyway.
+) else if "!REMAIN_COUNT!"=="0" (
+  echo     All !TOTAL_COUNT! submodules are already fetched; nothing to do.
+  echo.
+  goto :success
+) else (
+  echo     !REMAIN_COUNT! of !TOTAL_COUNT! submodules not ready.
+)
 echo.
 
 rem ---------- Recursive fetch with retries ----------
