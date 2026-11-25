@@ -19,8 +19,8 @@ if not exist "%SRC%\CMakeLists.txt" (
   exit /b 1
 )
 
-if not exist "%PREFIX%\include" mkdir "%PREFIX%\include"
-if not exist "%PREFIX%\libs" mkdir "%PREFIX%\libs"
+rem The install step creates include/ and libs/ on success; do not pre-create them,
+rem so a failed build leaves no misleading empty install directory.
 
 echo [1/2] Configuring Eigen 3.4.0 (%CONFIG%)...
 cmake -S "%SRC%" -B "%BUILD%" -G "Visual Studio 17 2022" -A x64 ^

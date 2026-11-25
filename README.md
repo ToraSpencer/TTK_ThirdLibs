@@ -103,6 +103,8 @@ target_link_libraries(your_target PRIVATE imgui)
 
 前置条件：CMake 在 `PATH` 中、安装 Visual Studio 2022、Boost 的全部嵌套子模块已初始化。输出统一为 x64 静态库。产物布局、CMake 用法与限制见 [操作说明.md §10](操作说明.md#10-预编译与安装脚本)。
 
+<span style="background-color: #40E0D0;">`install/<库>` 与 `debug_install/<库>` 仅在对应库成功构建并安装后才会创建。</span>若某个库的目录缺失、或其下没有头文件/库文件，说明该库构建失败——请向上翻看该库脚本打印的 CMake/MSBuild 错误，而不是目录内容。脚本不再预建 `include/`、`libs/`，失败时不会残留误导性的空目录。常见失败原因：CMake 版本过旧或过新、缺少 Visual Studio 2022 的「使用 C++ 的桌面开发」工作负载、对应子模块未完整拉取。
+
 ## 3. 注意事项
 
 - <span style="background-color: #40E0D0;">Eigen 官方仓库在 GitLab（`gitlab.com/libeigen/eigen`）。</span>GitHub 上的 `eigen-mirror/eigen` 属第三方镜像，本仓库不作为依赖源。

@@ -19,11 +19,12 @@ if not exist "%SRC%\CMakeLists.txt" (
   exit /b 1
 )
 
-if not exist "%PREFIX%\include" mkdir "%PREFIX%\include"
-if not exist "%PREFIX%\libs" mkdir "%PREFIX%\libs"
+rem The install step creates include/ and libs/ on success; do not pre-create them,
+rem so a failed build leaves no misleading empty install directory.
 
 echo [1/2] Configuring OpenMesh 7.0 (%CONFIG%, x64)...
 cmake -S "%SRC%" -B "%BUILD%" -G "Visual Studio 17 2022" -A x64 ^
+  -DCMAKE_POLICY_VERSION_MINIMUM=3.5 ^
   -DCMAKE_INSTALL_PREFIX="%PREFIX%" ^
   -DBUILD_APPS=OFF ^
   -DOPENMESH_BUILD_SHARED=OFF
