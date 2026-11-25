@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="Claude Code" agent="Claude Code" version="24.0.0">
+  <diagram id="ttk-thirdlibs-workflow" name="从拉取到使用">
+    <mxGraphModel dx="1400" dy="880" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="880" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="title" value="TTK_ThirdLibs：从拉取到使用" style="text;html=1;align=left;verticalAlign=middle;fontSize=26;fontStyle=1;fontColor=#1F2D3D;" vertex="1" parent="1">
+          <mxGeometry x="40" y="14" width="700" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="拉取 submodule → 一键构建 → 单库脚本内部 → 在 CMake 中消费" style="text;html=1;align=left;verticalAlign=middle;fontSize=12;fontColor=#5A6673;" vertex="1" parent="1">
+          <mxGeometry x="40" y="50" width="700" height="22" as="geometry" />
+        </mxCell>
+
+        <!-- 阶段 1 -->
+        <mxCell id="stage1" value="① 拉取源码（一次性）" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;align=left;spacingLeft=14;spacingTop=8;fontSize=14;fontStyle=1;fillColor=#EAF2FB;strokeColor=#4A78B5;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="40" y="100" width="1320" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="s1Pre" value="前置条件&lt;br&gt;Visual Studio 2022（v143）&lt;br&gt;CMake 在 PATH，x64" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#DAE8FC;strokeColor=#4A78B5;align=left;spacingLeft=10;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="70" y="145" width="280" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="s1Fetch" value="完整拉取所有第三方库.bat&lt;br&gt;先做全量状态检查；未就绪才拉取&lt;br&gt;submodule update --init --recursive --depth 1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#DAE8FC;strokeColor=#4A78B5;align=left;spacingLeft=10;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="380" y="145" width="420" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="s1Retry" value="失败与重复执行&lt;br&gt;多轮 + 逐项重试，清理中断残留&lt;br&gt;全部就绪时直接退出，不做更新" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#DAE8FC;strokeColor=#4A78B5;align=left;spacingLeft=10;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="830" y="145" width="480" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="e1a" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeWidth=2;strokeColor=#4A78B5;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="s1Pre" target="s1Fetch">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1b" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;dashed=1;strokeWidth=2;strokeColor=#4A78B5;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="s1Fetch" target="s1Retry">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 阶段 2 -->
+        <mxCell id="stage2" value="② 一键构建（每个配置跑一次）" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;align=left;spacingLeft=14;spacingTop=8;fontSize=14;fontStyle=1;fillColor=#FDF6E3;strokeColor=#C9A227;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="40" y="280" width="1320" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="s2All" value="根脚本 build_all_release.bat / build_all_debug.bat&lt;br&gt;按序：Boost → Eigen → OpenMesh → GTest → ImGui&lt;br&gt;单个失败不中断，结束汇总；有失败返回非零" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#FFF2CC;strokeColor=#C9A227;align=left;spacingLeft=10;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="70" y="325" width="420" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="s2Lib" value="每个库的构建脚本&lt;br&gt;third_party/&amp;lt;lib&amp;gt;/build_release*.bat&lt;br&gt;third_party/&amp;lt;lib&amp;gt;/build_debug*.bat" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#FFF2CC;strokeColor=#C9A227;align=left;spacingLeft=10;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="530" y="325" width="330" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="s2Out" value="产物目录&lt;br&gt;install/ —— Release（/MD）&lt;br&gt;debug_install/ —— Debug（/MDd，OpenMesh 带 d）" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#FFF2CC;strokeColor=#C9A227;align=left;spacingLeft=10;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="900" y="325" width="430" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="e2a" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeWidth=2;strokeColor=#C9A227;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="s2All" target="s2Lib">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2b" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeWidth=2;strokeColor=#C9A227;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="s2Lib" target="s2Out">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 阶段 3 -->
+        <mxCell id="stage3" value="③ 单库脚本内部（以 build_release&amp;lt;ver&amp;gt;.bat 为例）" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;align=left;spacingLeft=14;spacingTop=8;fontSize=14;fontStyle=1;fillColor=#F2F2F2;strokeColor=#9AA0A6;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="40" y="500" width="1320" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="s3Conf" value="CMake 配置&lt;br&gt;cmake -S 源码 -B build/&amp;lt;lib&amp;gt;-release&lt;br&gt;-G &quot;Visual Studio 17 2022&quot; -A x64" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#F5F5F5;strokeColor=#9AA0A6;align=left;spacingLeft=10;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="70" y="548" width="290" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="s3Build" value="编译&lt;br&gt;cmake --build build/&amp;lt;lib&amp;gt;-release&lt;br&gt;--config Release" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#F5F5F5;strokeColor=#9AA0A6;align=left;spacingLeft=10;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="395" y="548" width="270" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="s3Inst" value="安装&lt;br&gt;cmake --install → install/&amp;lt;lib&amp;gt;&lt;br&gt;include/ + libs/" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#F5F5F5;strokeColor=#9AA0A6;align=left;spacingLeft=10;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="700" y="548" width="270" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="s3Note" value="注意&lt;br&gt;GTest / ImGui 走包装 CMakeLists&lt;br&gt;Boost 需先拉取 170 个嵌套子模块" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#FFE6CC;strokeColor=#C77B30;dashed=1;align=left;spacingLeft=10;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1005" y="548" width="325" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="e3a" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeWidth=2;strokeColor=#9AA0A6;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="s3Conf" target="s3Build">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3b" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeWidth=2;strokeColor=#9AA0A6;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="s3Build" target="s3Inst">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 阶段 4 -->
+        <mxCell id="stage4" value="④ 在 CMake 中消费（二选一）" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;align=left;spacingLeft=14;spacingTop=8;fontSize=14;fontStyle=1;fillColor=#F3EDF8;strokeColor=#7E5CA0;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="40" y="710" width="1320" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="s4Src" value="源码集成：add_subdirectory(third_party/&amp;lt;lib&amp;gt;)&lt;br&gt;无需预编译，配置时编译；详见 README §2.2" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#E1D5E7;strokeColor=#7E5CA0;align=left;spacingLeft=10;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="70" y="758" width="600" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="s4Pre" value="预编译集成：按 $&amp;lt;CONFIG&amp;gt; 选择 install 或 debug_install&lt;br&gt;include/ + libs/ 直接链接；详见 README §2.3" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#E1D5E7;strokeColor=#7E5CA0;align=left;spacingLeft=10;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="710" y="758" width="620" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- 阶段间箭头 -->
+        <mxCell id="e12" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeWidth=2;strokeColor=#5A6673;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="stage1" target="stage2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e23" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeWidth=2;strokeColor=#5A6673;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="stage2" target="stage3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e34" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeWidth=2;strokeColor=#5A6673;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="stage3" target="stage4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
