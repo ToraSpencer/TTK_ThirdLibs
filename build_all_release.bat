@@ -61,6 +61,7 @@ if "%FAILED%"=="1" (
   echo [FAILED] Some libraries failed to build. Scroll up for the CMake/MSBuild error.
   echo   Common causes: CMake too old or too new, missing Visual Studio 2022
   echo   "Desktop development with C++" workload, or an unfetched submodule.
+  pause
   exit /b 1
 )
 
