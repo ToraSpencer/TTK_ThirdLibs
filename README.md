@@ -66,6 +66,8 @@ target_link_libraries(your_target PRIVATE Boost::geometry Boost::serialization)
 # Eigen（可选：跳过其自带测试与文档的配置）
 set(BUILD_TESTING OFF CACHE BOOL "" FORCE)
 set(EIGEN_BUILD_DOC OFF CACHE BOOL "" FORCE)
+# Eigen 的 blas/ 会检测 Fortran 编译器；Visual Studio 生成器下可能长时间卡在 devenv（见注意事项）
+set(CMAKE_Fortran_COMPILER NOTFOUND)
 add_subdirectory(third_party/eigen/eigen3.4.0 EXCLUDE_FROM_ALL)
 target_link_libraries(your_target PRIVATE Eigen3::Eigen)
 
@@ -108,6 +110,7 @@ target_link_libraries(your_target PRIVATE imgui)
 ## 3. 注意事项
 
 - <span style="background-color: #40E0D0;">Eigen 官方仓库在 GitLab（`gitlab.com/libeigen/eigen`）。</span>GitHub 上的 `eigen-mirror/eigen` 属第三方镜像，本仓库不作为依赖源。
+- Eigen 的 `blas/` 子目录会调用 `check_language(Fortran)`：Visual Studio 生成器下 CMake 通过 `devenv` 编译 `CompilerIdFortran.vfproj` 来识别 Fortran 编译器，<span style="background-color: #40E0D0;">没有 Fortran 工具链的机器上该检测可能长时间不返回</span>。嵌入式用法在 `add_subdirectory` 前写 `set(CMAKE_Fortran_COMPILER NOTFOUND)`，预编译脚本传 `-DCMAKE_Fortran_COMPILER=NOTFOUND`，即可跳过。
 - <span style="background-color: #40E0D0;">OpenMesh 7.0 的官方 Git 服务器（RWTH GitLab）当前网络不可达，submodule 指向已校验的 GitLab.com 镜像。</span>镜像 tag 与官方 7.0 发行包逐文件一致；若镜像失效，可切换到同 commit 的其它镜像（见操作说明）。
 - OpenMesh 7.0 无法用 win32 线程模型的 MinGW 编译（`mostream.hh` 依赖 `std::mutex`），请使用 MSVC 或 posix 线程版 MinGW。
 - <span style="background-color: #40E0D0;">GTest 1.5.0 上游 CMake 没有 install 规则，并把 `/MD` 改写成 `/MT`。</span>本仓库用 `third_party/gtest/CMakeLists.txt` 包装其源码，保持 `/MD` 动态 CRT 并安装为静态库；链接时按配置选择 `install/gtest` 或 `debug_install/gtest`。

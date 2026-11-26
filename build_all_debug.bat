@@ -6,6 +6,11 @@ rem Build and install all third-party libraries (Debug, x64) into <repo>\debug_i
 cd /d "%~dp0"
 set "FAILED=0"
 
+rem Do not name the exit-code variable "RC": every child process inherits it,
+rem and CMake treats the RC environment variable as the Windows resource
+rem compiler path ("Could not find the compiler specified in the environment
+rem variable RC"), so every library after the first would fail to configure.
+
 echo ========================================
 echo Building all third-party libraries
 echo Configuration: Debug, x64
@@ -14,45 +19,45 @@ echo.
 
 echo [1/5] Boost 1.89.0 ...
 call third_party\boost\build_debug1.89.0.bat
-set "RC=%errorlevel%"
-if not "%RC%"=="0" (
-  echo [WARN] Boost 1.89.0 failed with exit code %RC%
+set "EXIT_CODE=%errorlevel%"
+if not "%EXIT_CODE%"=="0" (
+  echo [WARN] Boost 1.89.0 failed with exit code %EXIT_CODE%
   set "FAILED=1"
 )
 echo.
 
 echo [2/5] Eigen 3.4.0 ...
 call third_party\eigen\build_debug3.4.0.bat
-set "RC=%errorlevel%"
-if not "%RC%"=="0" (
-  echo [WARN] Eigen 3.4.0 failed with exit code %RC%
+set "EXIT_CODE=%errorlevel%"
+if not "%EXIT_CODE%"=="0" (
+  echo [WARN] Eigen 3.4.0 failed with exit code %EXIT_CODE%
   set "FAILED=1"
 )
 echo.
 
 echo [3/5] OpenMesh 7.0 ...
 call third_party\openmesh\build_debug7.0.bat
-set "RC=%errorlevel%"
-if not "%RC%"=="0" (
-  echo [WARN] OpenMesh 7.0 failed with exit code %RC%
+set "EXIT_CODE=%errorlevel%"
+if not "%EXIT_CODE%"=="0" (
+  echo [WARN] OpenMesh 7.0 failed with exit code %EXIT_CODE%
   set "FAILED=1"
 )
 echo.
 
 echo [4/5] Google Test 1.5.0 ...
 call third_party\gtest\build_debug1.5.0.bat
-set "RC=%errorlevel%"
-if not "%RC%"=="0" (
-  echo [WARN] Google Test 1.5.0 failed with exit code %RC%
+set "EXIT_CODE=%errorlevel%"
+if not "%EXIT_CODE%"=="0" (
+  echo [WARN] Google Test 1.5.0 failed with exit code %EXIT_CODE%
   set "FAILED=1"
 )
 echo.
 
 echo [5/5] Dear ImGui 1.93.0 ...
 call third_party\imgui\build_debug1.93.0.bat
-set "RC=%errorlevel%"
-if not "%RC%"=="0" (
-  echo [WARN] Dear ImGui 1.93.0 failed with exit code %RC%
+set "EXIT_CODE=%errorlevel%"
+if not "%EXIT_CODE%"=="0" (
+  echo [WARN] Dear ImGui 1.93.0 failed with exit code %EXIT_CODE%
   set "FAILED=1"
 )
 echo.

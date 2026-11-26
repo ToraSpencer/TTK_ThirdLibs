@@ -22,8 +22,14 @@ if not exist "%SRC%\CMakeLists.txt" (
 rem The install step creates include/ and libs/ on success; do not pre-create them,
 rem so a failed build leaves no misleading empty install directory.
 
+rem Eigen's blas/ subdirectory unconditionally calls check_language(Fortran).
+rem With the Visual Studio generator CMake identifies the Fortran compiler by
+rem building CompilerIdFortran.vfproj through devenv, which can hang forever
+rem on machines without a Fortran toolchain. Eigen is header-only here, so
+rem mark Fortran as unavailable and skip that check.
 echo [1/2] Configuring Eigen 3.4.0 (%CONFIG%)...
 cmake -S "%SRC%" -B "%BUILD%" -G "Visual Studio 17 2022" -A x64 ^
+  -DCMAKE_Fortran_COMPILER=NOTFOUND ^
   -DINCLUDE_INSTALL_DIR="%PREFIX%\include" ^
   -DCMAKE_INSTALL_PREFIX="%PREFIX%" ^
   -DBUILD_TESTING=OFF ^
